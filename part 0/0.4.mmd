@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note over browser: Użytkownik wpisuje tekst w formularzu i klika "Zapisz"
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: HTTP 302 Redirect to /notes
+    deactivate server
+
+    browser->>server: GET /notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET /main.css
+    activate server
+    server-->>browser: CSS file
+    deactivate server
+
+    browser->>server: GET /main.js
+    activate server
+    server-->>browser: JavaScript file
+    deactivate server
+
+    browser->>server: GET /data.json
+    activate server
+    server-->>browser: Updated notes as JSON
+    deactivate server
+
+    Note right of browser: Przeglądarka renderuje zaktualizowaną listę notatek
