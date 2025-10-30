@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    %% User creates new note via SPA
+    browser->>browser: User enters note and clicks Save
+    Note right of browser: JavaScript intercepts form submit event
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa (JSON: { "content": "New note", "date": "timestamp" })
+    activate server
+    server-->>browser: 201 Created (Note added)
+    deactivate server
+    Note right of browser: Note is added to the page dynamically without reloading.
