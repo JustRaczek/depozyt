@@ -6,7 +6,8 @@ const App = () => {
   const increaseByOne = () => setCounter(counter + 1)
   const multiplysthxDD =  () => setCounter(counter * (10+counter))
   const setToZero = () => setCounter(0)
-
+  setTimeout(    () => setCounter(counter + 1),    1000  )
+  console.log('rendering...', counter)
   return (
     <div>
       <div>{counter}</div>
